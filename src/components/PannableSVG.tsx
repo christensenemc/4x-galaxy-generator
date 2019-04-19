@@ -65,7 +65,9 @@ class PannableSVG extends React.Component<PannableSVGProps,{}> {
     };
 
     const toolbarProps = {
-      position: 'none'
+      position: 'none',
+      SVGAlignX: 'left',
+      SVGAlignY: 'left'
     }
 
     return (
