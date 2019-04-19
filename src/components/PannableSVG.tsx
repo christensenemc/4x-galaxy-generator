@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import {ReactSVGPanZoom} from 'react-svg-pan-zoom'
+//@ts-ignore
+import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom'
 
 interface PannableSVGProps {
   contentWidth: number;
@@ -8,7 +9,7 @@ interface PannableSVGProps {
   children: any;
   onZoom?(level: number): void
   onClick?(event: React.MouseEvent): void 
-  getRef?(element: ReactSVGPanZoom | null): void
+  getRef?(element: any | null): void
 }
 
 interface PannableSVGState {
@@ -59,9 +60,18 @@ class PannableSVG extends React.Component<PannableSVGProps,{}> {
 
     const { width, height } = this.state;
 
+    const miniatureProps = {
+      position: 'none'
+    };
+
+    const toolbarProps = {
+      position: 'none'
+    }
+
     return (
       <div ref={e => this.containerElement = e} style={{height:'100%',width:'100%'}}>
-        <ReactSVGPanZoom
+        <UncontrolledReactSVGPanZoom
+          //@ts-ignore
           ref={el => {if(getRef){ getRef(el) }}}
           width={width}
           height={height}
@@ -73,11 +83,12 @@ class PannableSVG extends React.Component<PannableSVGProps,{}> {
           //@ts-ignore
           scaleFactorMax={3}
           //@ts-ignore
-          miniaturePosition='none'
+          miniatureProps={miniatureProps}
           //@ts-ignore
-          tool={'auto'}
+          tool='auto'
           //@ts-ignore
-          toolbarPosition='none'
+          toolbarProps={toolbarProps}
+          
           //@ts-ignore
           detectAutoPan={false}
         >
@@ -88,7 +99,7 @@ class PannableSVG extends React.Component<PannableSVGProps,{}> {
           >
             {children}
           </svg>
-        </ReactSVGPanZoom>
+        </UncontrolledReactSVGPanZoom>
       </div>
     );
   }

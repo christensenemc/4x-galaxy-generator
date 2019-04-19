@@ -21,7 +21,6 @@ interface AppState {
 
 class App extends React.Component<{},AppState> {
   private panZoomElement: ReactSVGPanZoom | null;
-  private galaxyContainerEl: HTMLDivElement | null;
 
   readonly state: AppState = { 
     galaxy : null, 
@@ -64,7 +63,7 @@ class App extends React.Component<{},AppState> {
     return (
       <div className="App">
         <div className="SideBar"></div>
-        <div className="Galaxy" ref={el => this.galaxyContainerEl = el}>
+        <div className="Galaxy">
           {galaxy && (
             <PannableSVG 
               contentWidth={1000} 
