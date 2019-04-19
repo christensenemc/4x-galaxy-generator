@@ -25,7 +25,11 @@ The generator works like this:
 Next Steps
 ==========
 [] Fill in large empty spaces between stars with Nebulas
+
 [] Give stars fun names and generate planets for them
+
 [] Render for React Native
+
 [] Hide star names on zoom out
+
 [] Show more star details on zoom in
